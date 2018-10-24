@@ -26,6 +26,7 @@ class MainActivityFragment : Fragment(), SeekBar.OnSeekBarChangeListener {
         val vistaRaiz =  inflater.inflate(R.layout.fragment_main, container, false)
         val seek = vistaRaiz.findViewById<SeekBar>(R.id.seekBar) as SeekBar
         progreso = seek.progress  //3
+        seek.setOnSeekBarChangeListener(this)//funcion parametro llamado
         listView = vistaRaiz.findViewById<ListView>(R.id.listView) as ListView
 
 
@@ -45,8 +46,8 @@ class MainActivityFragment : Fragment(), SeekBar.OnSeekBarChangeListener {
 
 
 
-    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onProgressChanged(p0: SeekBar?,p1:Int,p2: Boolean) {
+        calcularTablas(p1)
     }
 
     override fun onStartTrackingTouch(seekBar: SeekBar?) {
